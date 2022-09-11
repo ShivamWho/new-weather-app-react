@@ -1,6 +1,7 @@
 import { TbMapSearch } from 'react-icons/tb'
 import { TbSearch } from 'react-icons/tb'
 import { useState } from 'react'
+import Header from './components/Header';
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY
@@ -37,6 +38,26 @@ function App() {
               </button>
             </form> */}
           </div>
+        </div>
+        <div className="info-container">
+          <Header />
+          {/* {weatherData.length === 0 ? 
+              <div className="nodata">
+                <h1>{noData}</h1>
+              </div> : 
+              <>
+                <h1>Today</h1>
+                <DetailsCard weather_icon={weatherIcon} data={weatherData} />
+                <h1 className="title">More On {city}</h1>
+                <ul className="summary">
+                  {weatherData.list.map((days, index) =>{
+                    if(index > 0){
+                      return (<SummaryCard key={index} day={days} />)
+                    }
+                  })}
+                </ul>
+              </>
+            } */}
         </div>
       </div>
     </div>
