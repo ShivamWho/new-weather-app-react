@@ -183,3 +183,78 @@ body{
   border-radius: 1rem;
   margin: 1rem;
 }
+.title{
+  margin-top: 3rem;
+}
+@media only screen and (max-width: 1024px) {
+  .content{
+    display: grid;
+    grid-template-columns: 99%;
+    gap: 2rem;
+    overflow: auto;
+    padding: 5%;
+    font-size: 1.5rem;
+  }
+  .content::-webkit-scrollbar{
+    width: 0 !important;
+    display: none;
+  }
+  .form-container{
+    border-radius: 1rem;
+  }
+  /* .info-container{
+    margin-top: 2rem;
+  } */
+  .logo{
+    font-size: 1.5rem;
+  }
+  .city{
+    font-size: 1.25rem;
+  }
+  .search h2{
+    font-size: 1.75rem;
+  }
+  .search-bar{
+    display: flex;
+    width: 100%;
+    padding-bottom: 10%;
+  }
+  .info-container{
+    
+    border-radius: 1rem;
+  }
+  .nodata{
+    font-size: 1.5rem;
+  }
+  .clouds{
+    font-size: 1.45rem;
+    width: 55%;
+  }
+  .des{
+    font-size: 1.5rem;
+  }
+  .more-info{
+    font-size: 1.25rem;
+    padding-right: 0.25rem;
+    border-left: 1px solid var(--hrColor);
+    padding-left: 75px;
+    padding-right: 1rem;
+  }
+  h1{
+    font-size: 2rem;
+  }
+  .summary{
+    display: grid;
+    grid-template-columns: repeat(2, 49%);
+    align-self: center;
+    gap: 1rem;
+  }
+  .search-bar > input{
+    padding: 7%;
+    font-size: 1.25rem;
+  }
+  .s-icon{
+    padding: 8px;
+
+  }
+}
