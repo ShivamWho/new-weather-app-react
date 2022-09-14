@@ -56,7 +56,7 @@ function App() {
       <div className="content">
         <div className="form-container">
           <div className="name">
-            <div className="logo">Kai - Weather App<hr></hr></div>
+            <div className="logo">Weather App<hr></hr></div>
             <div className="city">
               <TbMapSearch />
               <p>{city}</p>
