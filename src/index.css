@@ -81,6 +81,7 @@ body{
   border-radius: 1rem;
   border-top-left-radius: 0rem;
   border-bottom-left-radius: 0rem;
+  padding-top: 5%;
 }
 .name{
   display: flex;
@@ -139,7 +140,7 @@ body{
   padding-left: 10px;
   border: none;
   outline: none;
-  color: #ffff;
+  color: black;
   font-size: 1rem;
   border-radius: 5px;
   border-top-right-radius: 0px;
