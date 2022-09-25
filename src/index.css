@@ -145,6 +145,7 @@ body{
   border-radius: 5px;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 .s-icon{
   display: flex;
