@@ -3,7 +3,7 @@ import '../css/SummaryCard.css'
 import React from 'react'
 
 function SummaryCard({day}) {
-  const day_icon = `${process.env.REACT_APP_ICON_URL + day.weather[0]["icon"]}@2x.png`
+  const day_icon = `${'http://openweathermap.org/img/wn/' + day.weather[0]["icon"]}@2x.png`
   return (
     <li className="summary-items">
         <div>
