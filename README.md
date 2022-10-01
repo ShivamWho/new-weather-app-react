@@ -8,7 +8,7 @@
 -   <a href= "https://github.com/ShivamWho/new-weather-app-react/blob/main/CONTRIBUTING.md">Contributing Guidelines</a>
 -   <a href= "https://github.com/ShivamWho/new-weather-app-react/blob/main/HACKTOBERFEST.md">About Hacktoberfest</a>
 <br><br>
-#### Join our [Discord](https://discord.gg/Z9hbT8RGNG) server.
+### Join our [Discord](https://discord.gg/Wu9g8rQcny) server.
 
 ## REPO STATUS
 ![GitHub PR Open](https://img.shields.io/github/issues-pr/ShivamWho/new-weather-app-react?style=for-the-badge&color=aqua)
