@@ -17,12 +17,17 @@ npm install
 6. Create .env file in new-weather-app-react folder and do as shown in image
 <img width="563" alt="Screenshot 2022-10-02 011707" src="https://user-images.githubusercontent.com/78149368/193426007-c8d2e98d-6f33-4586-abc4-be883759e37d.png">
 
-7. Make a new branch
+7. Run the React Project
+```markdown
+npm start
+```
+
+8. Make a new branch
 ```markdown
 git checkout -b branch-name
 ```
-8. Make change in the repository with the new branch.
-9. Push the changes.
+9. Make change in the repository with the new branch.
+10. Push the changes.
 
 ```markdown
 git add .
