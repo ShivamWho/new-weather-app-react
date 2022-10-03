@@ -87,7 +87,7 @@ function App() {
               <DetailsCard weather_icon={weatherIcon} data={weatherData} />
               <h1 className="title">More On {city}</h1>
               <ul className="summary">
-                {weatherData.list.foreach((days, index) => {
+                {weatherData.list.forEach((days, index) => {
                   if (index > 0) {
                     return (<SummaryCard key={index} day={days} />)
                   }
