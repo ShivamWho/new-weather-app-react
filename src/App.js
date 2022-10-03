@@ -11,7 +11,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [weatherData, setWeatherData] = useState([])
   const [city, setCity] = useState('Unknown location')
-  const [weatherIcon, setWeatherIcon] = useState(`http://openweathermap.org/img/wn/10n@2x.png`)
+  const [weatherIcon, setWeatherIcon] = useState(`https://openweathermap.org/img/wn/10n@2x.png`)
 
   const handleChange = input => {
     const { value } = input.target
@@ -27,7 +27,7 @@ function App() {
     setWeatherData([])
     let how_to_search = (typeof location === 'string') ? `q=${location}` : `lat=${location[0]}&lon=${location[1]}`
 
-    const url = 'http://api.openweathermap.org/data/2.5/forecast?'
+    const url = 'https://api.openweathermap.org/data/2.5/forecast?'
     try {
       let res = await fetch(`${url}${how_to_search}&appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
       let data = await res.json()
@@ -37,7 +37,7 @@ function App() {
       }
       setWeatherData(data)
       setCity(`${data.city.name}, ${data.city.country}`)
-      setWeatherIcon(`${'http://openweathermap.org/img/wn/' + data.list[0].weather[0]["icon"]}@4x.png`)
+      setWeatherIcon(`${'https://openweathermap.org/img/wn/' + data.list[0].weather[0]["icon"]}@4x.png`)
     } catch (error) {
       console.log(error)
     }
