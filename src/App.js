@@ -31,7 +31,8 @@ function App() {
       let res = await fetch(`${'http://api.openweathermap.org/data/2.5/forecast?'+how_to_search}
       &appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
       let data = await res.json()
-      if(data.cod != 200) {
+      
+      if(data.cod !== 200) {
         setNoData('Location Not Found')
         return
       }
@@ -87,10 +88,12 @@ function App() {
                 <DetailsCard weather_icon={weatherIcon} data={weatherData} />
                 <h1 className="title">More On {city}</h1>
                 <ul className="summary">
-                  {weatherData.list.map((days, index) =>{
+                  {weatherData.list.map((days, index) => {
                     if(index > 0){
                       return (<SummaryCard key={index} day={days} />)
                     }
+
+                    return <></>;
                   })}
                 </ul>
               </>
