@@ -27,11 +27,11 @@ function App() {
     setWeatherData([])
     let how_to_search = (typeof location === 'string') ? `q=${location}` : `lat=${location[0]}&lon=${location[1]}`
 
+    const url = 'http://api.openweathermap.org/data/2.5/forecast?'
     try {
-      let res = await fetch(`${'http://api.openweathermap.org/data/2.5/forecast?' + how_to_search}
-      &appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
+      let res = await fetch(`${url}${how_to_search}&appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
       let data = await res.json()
-      if (data.cod !== 200) {
+      if (data.cod !== '200') {
         setNoData('Location Not Found')
         return
       }
@@ -87,11 +87,7 @@ function App() {
               <DetailsCard weather_icon={weatherIcon} data={weatherData} />
               <h1 className="title">More On {city}</h1>
               <ul className="summary">
-                {weatherData.list.forEach((days, index) => {
-                  if (index > 0) {
-                    return (<SummaryCard key={index} day={days} />)
-                  }
-                })}
+                {weatherData.list.map((days, index) => (<SummaryCard key={index} day={days} />))}
               </ul>
             </>
           }
