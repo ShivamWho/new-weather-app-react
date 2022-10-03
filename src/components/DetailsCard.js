@@ -1,9 +1,12 @@
 import React from 'react'
 import moment from 'moment'
 import '../css/DetailsCard.css'
+import { useTranslation } from 'react-i18next';
 
 function DetailsCard({weather_icon, data}) {
   const {clouds, main, weather} = data.list[0]
+  const { t, i18n } = useTranslation();
+
   return (
     <div className="details">
        <div className="clouds">
@@ -16,11 +19,11 @@ function DetailsCard({weather_icon, data}) {
            <p className="time">{moment().format("dddd MMM YYYY")}</p>
        </div>
        <div className="more-info">
-           <p className="">RealFell: {Math.round(main.feels_like)}&deg;C</p>
-           <p className="">Humidity: {main.humidity}%</p>
-           <p className="">Cloud Cover: {clouds.all}</p>
-           <p className="">Min Temp: {Math.round(main.temp_min)}&deg;C</p>
-           <p className="">Max Temp: {Math.round(main.temp_max)}&deg;C</p>
+           <p className="">{t('realFell')}: {Math.round(main.feels_like)}&deg;C</p>
+           <p className="">{t('humidity')}: {main.humidity}%</p>
+           <p className="">{t('cover')}: {clouds.all}</p>
+           <p className="">{t('min-temp')}: {Math.round(main.temp_min)}&deg;C</p>
+           <p className="">{t('max-temp')}: {Math.round(main.temp_max)}&deg;C</p>
        </div> 
     </div>
   )

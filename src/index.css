@@ -97,6 +97,12 @@ body{
   -webkit-text-fill-color: transparent;
   
 }
+.selected-languange {
+  padding: 5px;
+  border: none;
+  border-radius: 0.75rem;
+  margin-bottom: 15px;
+}
 
 .city{
   display: inline-flex;

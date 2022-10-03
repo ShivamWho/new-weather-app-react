@@ -9,6 +9,7 @@ function SummaryCard({day}) {
         <div>
             <p className="">{Math.round(day.main.temp)}&deg;C</p>
             <p className="">
+              {console.log('day', day)}
                 {day.weather[0].main}
                 <img src={day_icon}  alt="" />
             </p>

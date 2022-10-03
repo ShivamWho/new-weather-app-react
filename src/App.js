@@ -3,15 +3,19 @@ import { TbSearch } from 'react-icons/tb'
 import { useState } from 'react'
 import DetailsCard from './components/DetailsCard';
 import SummaryCard from './components/SummaryCard';
+import { useTranslation } from 'react-i18next';
+import './languages/i18n';
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY
+  const { t, i18n } = useTranslation();
 
-  const [noData, setNoData] = useState('No Data Yet')
+  const [noData, setNoData] = useState(t('no-data'))
   const [searchTerm, setSearchTerm] = useState('')
   const [weatherData, setWeatherData] = useState([])
-  const [city, setCity] = useState('Unknown location')
+  const [city, setCity] = useState(t('unknown-location'))
   const [weatherIcon, setWeatherIcon] = useState(`http://openweathermap.org/img/wn/10n@2x.png`)
+  const [currentLanguage, setLanguage] = useState('en');
 
   const handleChange = input => {
     const {value} = input.target
@@ -23,16 +27,20 @@ function App() {
     getWeather(searchTerm)
   }
 
+  const handleLanguage = (event) => {
+    changeLanguage(event.target.value);
+  }
+
   const getWeather = async (location) => {
     setWeatherData([])
     let how_to_search = (typeof location === 'string') ? `q=${location}` : `lat=${location[0]}&lon=${location[1]}`
 
     try {
       let res = await fetch(`${'http://api.openweathermap.org/data/2.5/forecast?'+how_to_search}
-      &appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
+      &appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely&lang=es`)
       let data = await res.json()
       if(data.cod != 200) {
-        setNoData('Location Not Found')
+        setNoData(t('unknown-location'))
         return
       }
       setWeatherData(data)
@@ -42,6 +50,13 @@ function App() {
       console.log(error)
     }
   }
+
+  const changeLanguage = (value, location) => {
+      i18n
+          .changeLanguage(value)
+          .then(() => setLanguage(value) && getWeather(location))
+          .catch(err => console.log(err));
+  };
 
   const myIP = (location) => {
     const {latitude, longitude} = location.coords
@@ -62,10 +77,10 @@ function App() {
             </div>
           </div>
           <div className="search">
-            <h2>The Only Weather App You Need !</h2>
+            <h2>{t('title')}</h2>
             <hr />
             <form className="search-bar" noValidate onSubmit={handleSubmit}>
-              <input type="text" name="" id="" placeholder='#Explore ?' onChange={handleChange} required/>
+              <input type="text" name="" id="" placeholder={t('explore')} onChange={handleChange} required/>
               <button className="s-icon">
                   <TbSearch 
                     onClick={() => {
@@ -78,14 +93,22 @@ function App() {
           
         </div>
         <div className="info-container">
+          <div>
+            <select className='selected-languange' value={currentLanguage} onChange={(e) => handleLanguage(e)}>
+              <option selected value="en">{t('languages.en')}</option>
+              <option value="es">{t('languages.es')}</option>
+              <option value="fr">{t('languages.fr')}</option>
+            </select>
+          </div>
+
           {weatherData.length === 0 ? 
               <div className="nodata">
-                <h1>{noData}</h1>
+                <h1>{t('no-data')}</h1>
               </div> : 
               <>
-                <h1>Today</h1>
-                <DetailsCard weather_icon={weatherIcon} data={weatherData} />
-                <h1 className="title">More On {city}</h1>
+                <h1>{t('today')}</h1>
+                <DetailsCard weather_icon={weatherIcon} data={weatherData}/>
+                <h1 className="title">{t('more-on')} {city}</h1>
                 <ul className="summary">
                   {weatherData.list.map((days, index) =>{
                     if(index > 0){
