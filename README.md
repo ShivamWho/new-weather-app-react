@@ -6,6 +6,7 @@
 Weather Application created using ReactJS and APIs provided by OpenAPI.org.
 - [Contributing Guidelines](https://github.com/ShivamWho/new-weather-app-react/blob/main/CONTRIBUTING.md)
 -  [About Hacktoberfest](https://github.com/ShivamWho/new-weather-app-react/blob/main/HACKTOBERFEST.md)
+-  ### Join our [Discord](https://discord.gg/Wu9g8rQcny) server.
 
 ## Features
 
@@ -22,6 +23,7 @@ Weather Application created using ReactJS and APIs provided by OpenAPI.org.
 <a href="https://github.com/ShivamWho/new-weather-app-react/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=ShivamWho/new-weather-app-react" />
 </a>
+
 
 <br>
 <div align="center">
