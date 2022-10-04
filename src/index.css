@@ -113,6 +113,14 @@ body{
   justify-content: center;
   border-radius: 0.75rem;
 }
+
+.selected-languange {
+  padding: 5px;
+  border: none;
+  border-radius: 0.75rem;
+  margin-bottom: 15px;
+}
+
 .search{
   display: flex;
   flex-direction: column;
