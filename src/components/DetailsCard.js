@@ -3,7 +3,7 @@ import moment from 'moment';
 import '../css/DetailsCard.css';
 import BackgroundSound from './BackgroundSound';
 
-function DetailsCard({ weather_icon, data }) {
+function DetailsCard({ weather_icon, data, soundEnabled }) {
 	const { clouds, main, weather } = data.list[0];
 	return (
 		<div className='details'>
@@ -37,7 +37,7 @@ function DetailsCard({ weather_icon, data }) {
 					Max Temp: <span>{Math.round(main.temp_max)}&deg;C</span>
 				</p>
 			</div>
-			<BackgroundSound weather={weather[0]} />
+			<BackgroundSound weather={weather[0]} soundEnabled={soundEnabled} />
 		</div>
 	);
 }

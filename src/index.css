@@ -57,8 +57,8 @@ body{
   grid-template-columns: 49% 49%;
   padding: 3% 10%;
   border-radius: 1rem;
-  
-  
+
+
 }
 .form-container{
   background: url('./asset/lake-background.jpg') no-repeat;
@@ -96,7 +96,7 @@ body{
   background: -webkit-linear-gradient(#A4B7B1, #095F62);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
+
 }
 
 .city{
@@ -165,6 +165,10 @@ body{
   background: linear-gradient(106.23deg, #226fae, #226fae 100%);
   transform: scale(1.05);
 }
+.sound-toggler {
+  width : 2.25rem;
+  margin-block-end: 1rem;
+}
 .info-container{
   padding-left: 5%;
 }
@@ -228,7 +232,7 @@ body{
     padding-bottom: 10%;
   }
   .info-container{
-    
+
     border-radius: 1rem;
   }
   .nodata{
@@ -313,7 +317,7 @@ body{
     padding-bottom: 10%;
   }
   .info-container{
-    
+
     border-radius: 1rem;
   }
   .nodata{
@@ -365,4 +369,4 @@ body{
   100% {
     transform: rotate(360deg);
   }
-} 
+}
