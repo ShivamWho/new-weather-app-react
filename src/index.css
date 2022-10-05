@@ -168,6 +168,7 @@ body{
 .sound-toggler {
   width : 2.25rem;
   margin-block-end: 1rem;
+  border-radius: 5px;
 }
 .info-container{
   padding-left: 5%;
