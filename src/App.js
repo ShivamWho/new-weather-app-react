@@ -3,20 +3,23 @@ import { TbSearch } from 'react-icons/tb';
 import { useState } from 'react';
 import DetailsCard from './components/DetailsCard';
 import SummaryCard from './components/SummaryCard';
+import { useTranslation } from 'react-i18next';
+import './languages/i18n';
+
 import Astronaut from './asset/not-found.svg';
 import SearchPlace from './asset/search.svg';
 
 function App() {
 	const API_KEY = process.env.REACT_APP_API_KEY;
+  const { t, i18n } = useTranslation();
 
-	const [noData, setNoData] = useState('No Data Yet');
-	const [searchTerm, setSearchTerm] = useState('');
-	const [weatherData, setWeatherData] = useState([]);
-	const [city, setCity] = useState('Unknown location');
-	const [weatherIcon, setWeatherIcon] = useState(
-		`https://openweathermap.org/img/wn/10n@2x.png`
-	);
-	const [loading, setLoading] = useState(false);
+  const [noData, setNoData] = useState(t('no-data'))
+  const [searchTerm, setSearchTerm] = useState('')
+  const [weatherData, setWeatherData] = useState([])
+  const [city, setCity] = useState(t('unknown-location'))
+  const [weatherIcon, setWeatherIcon] = useState(`https://openweathermap.org/img/wn/10n@2x.png`)
+  const [currentLanguage, setLanguage] = useState('en');
+  const [loading, setLoading] = useState(false);
 
 	const handleChange = (input) => {
 		const { value } = input.target;
@@ -27,6 +30,17 @@ function App() {
 		e.preventDefault();
 		getWeather(searchTerm);
 	};
+
+  const handleLanguage = (event) => {
+    changeLanguage(event.target.value);
+  }
+
+  const changeLanguage = (value, location) => {
+    i18n
+        .changeLanguage(value)
+        .then(() => setLanguage(value) && getWeather(location))
+        .catch(err => console.log(err));
+  };
 
 	const getWeather = async (location) => {
 		setLoading(true);
@@ -66,10 +80,12 @@ function App() {
 		}
 	};
 
+
 	const myIP = (location) => {
 		const { latitude, longitude } = location.coords;
 		getWeather([latitude, longitude]);
 	};
+
 
 	return (
 		<div className='container'>
@@ -87,7 +103,7 @@ function App() {
 						</div>
 					</div>
 					<div className='search'>
-						<h2>The Only Weather App You Need !</h2>
+						<h2>{t('title')}</h2>
 						<hr />
 						<form
 							className='search-bar'
@@ -115,6 +131,13 @@ function App() {
 					</div>
 				</div>
 				<div className='info-container'>
+        
+             <select className='selected-languange' value={currentLanguage} onChange={(e) => handleLanguage(e)}>
+              <option selected value="en">{t('languages.en')}</option>
+              <option value="es">{t('languages.es')}</option>
+              <option value="fr">{t('languages.fr')}</option>
+            </select>
+            
 					{ loading ? <div className='loader'></div> : 
 						<span>
 							{weatherData.length === 0 ? (
@@ -152,7 +175,7 @@ function App() {
 											weather_icon={weatherIcon}
 											data={weatherData}
 										/>
-										<h1 className='title'>More On {city}</h1>
+										<h1 className='title'>{t('more-on')} {city}</h1>
 										<ul className='summary'>
 											{weatherData.list.map((days, index) => (
 												<SummaryCard key={index} day={days} />
