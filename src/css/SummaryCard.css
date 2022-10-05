@@ -23,12 +23,14 @@
 }
 .summary-items > div > p:nth-of-type(3) {
     text-transform: uppercase;
+    text-align:center;
     color: darkgray;
     font-size: 0.75rem;
+    font-weight: 800;
 }
 .summary-items > div > p:nth-of-type(4) {
     border-bottom: 1px solid var(--hrColor);
 }
 .summary-items > div > p:nth-of-type(2) img{
-    width: 50%;
+    width: 40%;
 }

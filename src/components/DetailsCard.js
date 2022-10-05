@@ -1,34 +1,48 @@
-import React from 'react'
-import moment from 'moment'
-import '../css/DetailsCard.css'
-import BackgroundSound from "./BackgroundSound"
+import React from 'react';
+import moment from 'moment';
+import '../css/DetailsCard.css';
+import BackgroundSound from './BackgroundSound';
 import { useTranslation } from 'react-i18next';
 
 function DetailsCard({ weather_icon, data }) {
-  const { clouds, main, weather } = data.list[0]
+	const { clouds, main, weather } = data.list[0];
   const { t } = useTranslation();
 
-  return (
-    <div className="details">
-      <div className="clouds">
-        <p className="celsius">{Math.round(main.temp)}&deg;C</p>
-        <div className="cloud-icon">
-          {weather[0].main}
-          <img src={weather_icon} className="" alt="" />
-        </div>
-        <p className="des">{weather[0].description}</p>
-        <p className="time">{moment().format("dddd MMM YYYY")}</p>
-      </div>
-      <div className="more-info">
-        <p className="">{t('realFell')}: {Math.round(main.feels_like)}&deg;C</p>
-        <p className="">{t('humidity')}: {main.humidity}%</p>
-        <p className="">{t('cover')}: {clouds.all}</p>
-        <p className="">{t('min-temp')}: {Math.round(main.temp_min)}&deg;C</p>
-        <p className="">{t('max-temp')}: {Math.round(main.temp_max)}&deg;C</p>
-      </div>
-      <BackgroundSound weather={weather[0]}/>
-    </div>
-  )
+	return (
+		<div className='details'>
+			<div className='clouds'>
+				<p className='celsius'>{Math.round(main.temp)}&deg;C</p>
+				<div className='cloud-icon'>
+					{weather[0].main}
+					<img src={weather_icon} className='' alt='' />
+				</div>
+				<p className='des'>
+					<span>{weather[0].description}</span>
+				</p>
+				<p className='time'>
+					<span>{moment().format('dddd MMM YYYY')}</span>
+				</p>
+			</div>
+			<div className='more-info'>
+				<p className=''>
+					{t('realFell')}: <span>{Math.round(main.feels_like)}&deg;C</span>
+				</p>
+				<p className=''>
+					{t('humidity')}: <span>{main.humidity}%</span>
+				</p>
+				<p className=''>
+					{t('cover')}: <span>{clouds.all}</span>
+				</p>
+				<p className=''>
+					{t('min-temp')}: <span>{Math.round(main.temp_min)}&deg;C</span>
+				</p>
+				<p className=''>
+					{t('max-temp')}: <span>{Math.round(main.temp_max)}&deg;C</span>
+				</p>
+			</div>
+			<BackgroundSound weather={weather[0]} />
+		</div>
+	);
 }
 
-export default DetailsCard
+export default DetailsCard;
