@@ -171,8 +171,13 @@ body{
   margin-top: 20px;
   color: darkgray;
   display: flex;
+  flex-direction:column;
   align-items: center;
   justify-content: center;
+  gap:2rem;
+}
+.nodata img{
+  max-width: 80%;
 }
 .summary{
   display: flex;
