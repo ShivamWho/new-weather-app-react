@@ -170,12 +170,12 @@ function App() {
 									</div>
 								) : (
 									<>
-										<h1>Today</h1>
+										<h1 className='centerTextOnMobile' >Today</h1>
 										<DetailsCard
 											weather_icon={weatherIcon}
 											data={weatherData}
 										/>
-										<h1 className='title'>{t('more-on')} {city}</h1>
+										<h1 className='title centerTextOnMobile'>{t('more-on')} {city}</h1>
 										<ul className='summary'>
 											{weatherData.list.map((days, index) => (
 												<SummaryCard key={index} day={days} />

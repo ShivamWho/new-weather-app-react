@@ -201,7 +201,9 @@ body{
 }
 .title{
   margin-top: 3rem;
+
 }
+
 @media only screen and (max-width: 1024px) {
   .content{
     display: grid;
@@ -284,6 +286,9 @@ body{
   }
   h2{
     font-size: 1.1rem;
+  }
+  .centerTextOnMobile{
+    text-align: center;
   }
 }
 
