@@ -16,6 +16,7 @@ function App() {
 	const [weatherIcon, setWeatherIcon] = useState(
 		`https://openweathermap.org/img/wn/10n@2x.png`
 	);
+	const [loading, setLoading] = useState(false);
 
 	const handleChange = (input) => {
 		const { value } = input.target;
@@ -28,6 +29,7 @@ function App() {
 	};
 
 	const getWeather = async (location) => {
+		setLoading(true);
 		setWeatherData([]);
 		let how_to_search =
 			typeof location === 'string'
@@ -42,9 +44,15 @@ function App() {
 			let data = await res.json();
 			if (data.cod !== '200') {
 				setNoData('Location Not Found');
+				setTimeout(() => {
+					setLoading(false);
+				}, 500);
 				return;
 			}
 			setWeatherData(data);
+			setTimeout(() => {
+				setLoading(false);
+			}, 500);
 			setCity(`${data.city.name}, ${data.city.country}`);
 			setWeatherIcon(
 				`${
@@ -53,6 +61,7 @@ function App() {
 				}@4x.png`
 			);
 		} catch (error) {
+			setLoading(true)
 			console.log(error);
 		}
 	};
@@ -106,49 +115,54 @@ function App() {
 					</div>
 				</div>
 				<div className='info-container'>
-					{weatherData.length === 0 ? (
-						<div className='nodata'>
-							<h1>{noData}</h1>
-							{noData === 'Location Not Found' ? (
-								<>
-									<img
-										src={Astronaut}
-										alt='an astronaut lost in the space'
-									/>
-									<p>
-										Oh oh! We've lost in the space finding
-										that place.
-									</p>
-								</>
-							) : (
-								<>
-									<img
-										src={SearchPlace}
-										alt='a person thinking about what place to find'
-									/>
-									<p style={{ padding: '20px' }}>
-										Don't worry, if you don't know what
-										search, try with: Canada, New York or
-										maybe Tatooine.
-									</p>
-								</>
-							)}
-						</div>
-					) : (
-						<>
-							<h1>Today</h1>
-							<DetailsCard
-								weather_icon={weatherIcon}
-								data={weatherData}
-							/>
-							<h1 className='title'>More On {city}</h1>
-							<ul className='summary'>
-								{weatherData.list.map((days, index) => (
-									<SummaryCard key={index} day={days} />
-								))}
-							</ul>
-						</>
-					)}
+					{ loading ? <div className='loader'></div> : 
+						<span>
+							{weatherData.length === 0 ? (
+								<div className='nodata'>
+									<h1>{noData}</h1>
+										{noData === 'Location Not Found' ? (
+											<>
+												<img
+													src={Astronaut}
+													alt='an astronaut lost in the space'
+												/>
+												<p>
+													Oh oh! We've lost in the space finding
+													that place.
+												</p>
+											</>
+										) : (
+											<>
+												<img
+													src={SearchPlace}
+													alt='a person thinking about what place to find'
+												/>
+												<p style={{ padding: '20px' }}>
+													Don't worry, if you don't know what
+													search, try with: Canada, New York or
+													maybe Tatooine.
+												</p>
+											</>
+										)}
+									</div>
+								) : (
+									<>
+										<h1>Today</h1>
+										<DetailsCard
+											weather_icon={weatherIcon}
+											data={weatherData}
+										/>
+										<h1 className='title'>More On {city}</h1>
+										<ul className='summary'>
+											{weatherData.list.map((days, index) => (
+												<SummaryCard key={index} day={days} />
+											))}
+										</ul>
+									</>
+								)}
+						</span>
+					}
+					
 				</div>
 			</div>
 		</div>

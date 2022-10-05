@@ -82,6 +82,7 @@ body{
   border-top-left-radius: 0rem;
   border-bottom-left-radius: 0rem;
   padding-top: 5%;
+  position: relative;
 }
 .name{
   display: flex;
@@ -341,3 +342,27 @@ body{
     align-self: center;
   }
 }
+
+/* loader */
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #3498db;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
