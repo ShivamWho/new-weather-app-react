@@ -2,6 +2,8 @@ import { TbMapSearch } from "react-icons/tb";
 import { TbSearch } from "react-icons/tb";
 import { useState } from "react";
 import { TbVolume } from "react-icons/tb";
+import { TbMoon } from "react-icons/tb";
+import { TbSun } from "react-icons/tb";
 import { TbVolumeOff } from "react-icons/tb";
 import DetailsCard from "./components/DetailsCard";
 import SummaryCard from "./components/SummaryCard";
@@ -16,6 +18,7 @@ import BackgroundColor from "./components/BackgroundColor";
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY;
+  console.log(API_KEY);
   const { t, i18n } = useTranslation();
 
   const [noData, setNoData] = useState(t("no-data"));
@@ -23,12 +26,15 @@ function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [city, setCity] = useState(t("unknown-location"));
   const [weatherIcon, setWeatherIcon] = useState(
-    `https://openweathermap.org/img/wn/10n@2x.png`,
+    `https://openweathermap.org/img/wn/10n@2x.png`
   );
   const [currentLanguage, setLanguage] = useState("en");
   const [loading, setLoading] = useState(false);
   const [backgroundSoundEnabled, setBackgroundSoundEnabled] = useState(true);
 
+  const toggleDark = () => {
+    document.body.classList.toggle("dark");
+  };
   const handleChange = (input) => {
     const { value } = input.target;
     setSearchTerm(value);
@@ -61,7 +67,7 @@ function App() {
     const url = "https://api.openweathermap.org/data/2.5/forecast?";
     try {
       let res = await fetch(
-        `${url}${how_to_search}&appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`,
+        `${url}${how_to_search}&appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`
       );
       let data = await res.json();
       if (data.cod !== "200") {
@@ -79,7 +85,7 @@ function App() {
       setWeatherIcon(
         `${
           "https://openweathermap.org/img/wn/" + data.list[0].weather[0]["icon"]
-        }@4x.png`,
+        }@4x.png`
       );
     } catch (error) {
       setLoading(true);
@@ -127,6 +133,27 @@ function App() {
             <div className="logo">
               Weather App<hr></hr>
             </div>
+            <div class="toggle-container">
+              <input
+                type="checkbox"
+                class="checkbox"
+                id="checkbox"
+                onChange={toggleDark}
+              />
+              <label for="checkbox" class="label">
+                <TbMoon
+                  style={{
+                    color: "#a6ddf0",
+                  }}
+                />
+                <TbSun
+                  style={{
+                    color: "#f5c32c",
+                  }}
+                />
+                <div class="ball" />
+              </label>
+            </div>
             <div className="city">
               <TbMapSearch />
               <p>{city}</p>
@@ -171,7 +198,7 @@ function App() {
             </option>
             <option value="es">{t("languages.es")}</option>
             <option value="fr">{t("languages.fr")}</option>
-						<option value="id">{t("languages.id")}</option>
+            <option value="id">{t("languages.id")}</option>
           </select>
 
           {loading ? (
@@ -204,7 +231,7 @@ function App() {
                 </div>
               ) : (
                 <>
-                  <h1 className="centerTextOnMobile">{ t('today') }</h1>
+                  <h1 className="centerTextOnMobile">{t("today")}</h1>
                   <DetailsCard
                     weather_icon={weatherIcon}
                     data={weatherData}
