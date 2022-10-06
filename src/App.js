@@ -1,6 +1,8 @@
 import { TbMapSearch } from "react-icons/tb";
 import { TbSearch } from "react-icons/tb";
 import { useState } from "react";
+import { TbVolume } from "react-icons/tb";
+import { TbVolumeOff } from "react-icons/tb";
 import DetailsCard from "./components/DetailsCard";
 import SummaryCard from "./components/SummaryCard";
 import { useTranslation } from "react-i18next";
@@ -25,6 +27,7 @@ function App() {
   );
   const [currentLanguage, setLanguage] = useState("en");
   const [loading, setLoading] = useState(false);
+  const [backgroundSoundEnabled, setBackgroundSoundEnabled] = useState(true);
 
   const handleChange = (input) => {
     const { value } = input.target;
@@ -149,6 +152,12 @@ function App() {
                 />
               </button>
             </form>
+            <button
+              className="s-icon sound-toggler"
+              onClick={() => setBackgroundSoundEnabled((prev) => !prev)}
+            >
+              {backgroundSoundEnabled ? <TbVolume /> : <TbVolumeOff />}
+            </button>
           </div>
         </div>
         <div className="info-container">
@@ -194,9 +203,13 @@ function App() {
                 </div>
               ) : (
                 <>
-                  <h1>Today</h1>
-                  <DetailsCard weather_icon={weatherIcon} data={weatherData} />
-                  <h1 className="title">
+                  <h1 className="centerTextOnMobile">Today</h1>
+                  <DetailsCard
+                    weather_icon={weatherIcon}
+                    data={weatherData}
+                    soundEnabled={backgroundSoundEnabled}
+                  />
+                  <h1 className="title centerTextOnMobile">
                     {t("more-on")} {city}
                   </h1>
                   <ul className="summary">

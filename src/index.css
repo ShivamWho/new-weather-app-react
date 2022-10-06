@@ -168,6 +168,11 @@ body {
   background: linear-gradient(106.23deg, #226fae, #226fae 100%);
   transform: scale(1.05);
 }
+.sound-toggler {
+  width: 2.25rem;
+  margin-block-end: 1rem;
+  border-radius: 5px;
+}
 .info-container {
   padding-left: 5%;
 }
@@ -197,6 +202,7 @@ body {
 .title {
   margin-top: 3rem;
 }
+
 @media only screen and (max-width: 1024px) {
   .content {
     display: grid;
@@ -277,6 +283,9 @@ body {
   }
   h2 {
     font-size: 1.1rem;
+  }
+  .centerTextOnMobile {
+    text-align: center;
   }
 }
 
