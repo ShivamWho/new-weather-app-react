@@ -1,7 +1,7 @@
 import ReactPlayer from 'react-player'
 
-function BackgroundSound({weather}) {
-    
+function BackgroundSound({weather, soundEnabled}) {
+
     function getVideoUrl(weatherId) {
         // id classification https://openweathermap.org/weather-conditions
         if (weatherId >= 200 && weatherId < 300) {
@@ -22,7 +22,7 @@ function BackgroundSound({weather}) {
     }
 
     return (
-        <ReactPlayer width={0} height={0} playing={true} loop={true} url={getVideoUrl(Number(weather.id))}/>
+        <ReactPlayer width={0} height={0} playing={soundEnabled} loop={true} url={getVideoUrl(Number(weather.id))}/>
     )
 }
 

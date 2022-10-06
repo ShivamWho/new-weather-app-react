@@ -4,7 +4,7 @@ import '../css/DetailsCard.css';
 import BackgroundSound from './BackgroundSound';
 import { useTranslation } from 'react-i18next';
 
-function DetailsCard({ weather_icon, data }) {
+function DetailsCard({ weather_icon, data, soundEnabled }) {
 	const { clouds, main, weather } = data.list[0];
   const { t } = useTranslation();
 
@@ -40,7 +40,7 @@ function DetailsCard({ weather_icon, data }) {
 					{t('max-temp')}: <span>{Math.round(main.temp_max)}&deg;C</span>
 				</p>
 			</div>
-			<BackgroundSound weather={weather[0]} />
+			<BackgroundSound weather={weather[0]} soundEnabled={soundEnabled} />
 		</div>
 	);
 }

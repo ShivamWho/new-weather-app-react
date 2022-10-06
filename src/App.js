@@ -1,6 +1,8 @@
 import { TbMapSearch } from 'react-icons/tb';
 import { TbSearch } from 'react-icons/tb';
 import { useState } from 'react';
+import { TbVolume } from "react-icons/tb";
+import { TbVolumeOff } from "react-icons/tb";
 import DetailsCard from './components/DetailsCard';
 import SummaryCard from './components/SummaryCard';
 import { useTranslation } from 'react-i18next';
@@ -20,6 +22,7 @@ function App() {
   const [weatherIcon, setWeatherIcon] = useState(`https://openweathermap.org/img/wn/10n@2x.png`)
   const [currentLanguage, setLanguage] = useState('en');
   const [loading, setLoading] = useState(false);
+  const [backgroundSoundEnabled, setBackgroundSoundEnabled] = useState(true);
 
 	const handleChange = (input) => {
 		const { value } = input.target;
@@ -128,17 +131,23 @@ function App() {
 								/>
 							</button>
 						</form>
+						<button
+							className="s-icon sound-toggler"
+							onClick={() => setBackgroundSoundEnabled((prev) => !prev)}
+						>
+							{backgroundSoundEnabled ? <TbVolume /> : <TbVolumeOff />}
+						</button>
 					</div>
 				</div>
 				<div className='info-container'>
-        
+
              <select className='selected-languange' value={currentLanguage} onChange={(e) => handleLanguage(e)}>
               <option selected value="en">{t('languages.en')}</option>
               <option value="es">{t('languages.es')}</option>
               <option value="fr">{t('languages.fr')}</option>
             </select>
-            
-					{ loading ? <div className='loader'></div> : 
+
+					{ loading ? <div className='loader'></div> :
 						<span>
 							{weatherData.length === 0 ? (
 								<div className='nodata'>
@@ -174,6 +183,7 @@ function App() {
 										<DetailsCard
 											weather_icon={weatherIcon}
 											data={weatherData}
+											soundEnabled={backgroundSoundEnabled}
 										/>
 										<h1 className='title'>{t('more-on')} {city}</h1>
 										<ul className='summary'>
@@ -185,7 +195,7 @@ function App() {
 								)}
 						</span>
 					}
-					
+
 				</div>
 			</div>
 		</div>
