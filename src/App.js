@@ -98,6 +98,10 @@ function App() {
     getWeather([latitude, longitude]);
   };
 
+    // load current location weather info on load
+  window.addEventListener("load", function() {
+    navigator.geolocation.getCurrentPosition(myIP)
+  })
   return (
     <div className="container">
       <div
