@@ -76,8 +76,8 @@ body {
   border-radius: 1rem;
   border-top-left-radius: 0rem;
   border-bottom-left-radius: 0rem;
-  padding-top: 5%;
   position: relative;
+  padding: 5%;
 }
 .name {
   display: flex;
@@ -168,14 +168,13 @@ body {
   background: linear-gradient(106.23deg, #226fae, #226fae 100%);
   transform: scale(1.05);
 }
+
 .sound-toggler {
   width: 2.25rem;
   margin-block-end: 1rem;
   border-radius: 5px;
 }
-.info-container {
-  padding-left: 5%;
-}
+
 .nodata {
   margin-top: 20px;
   color: darkgray;
