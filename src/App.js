@@ -145,6 +145,7 @@ function App() {
               <option selected value="en">{t('languages.en')}</option>
               <option value="es">{t('languages.es')}</option>
               <option value="fr">{t('languages.fr')}</option>
+							<option value="id">{t('languages.id')}</option>
             </select>
 
 					{ loading ? <div className='loader'></div> :
@@ -179,7 +180,7 @@ function App() {
 									</div>
 								) : (
 									<>
-										<h1 className='centerTextOnMobile' >Today</h1>
+										<h1 className='centerTextOnMobile' >{ t('today') }</h1>
 										<DetailsCard
 											weather_icon={weatherIcon}
 											data={weatherData}
