@@ -11,7 +11,25 @@
   --photo: #4cb256;
   --video: #ef5757;
   --location: #be58b7;
-  --shedule: #e1ae4a;
+  --schedule: #e1ae4a;
+  --bgColor1: #efefef;
+  --bgColor2: #e0dddd;
+  --blurBg: #a6ddf0;
+  --textColor: #000;
+  --subHeadingColor: darkgray;
+  --tempColor: #095f62;
+  --statsColor: #7c7979;
+}
+
+.dark {
+  --bgColor1: #262424;
+  --bgColor2: #191616;
+  --blurBg: #296579;
+  --cardColor: rgba(124, 124, 137, 0.64);
+  --textColor: #fff;
+  --subHeadingColor: rgb(17, 17, 17);
+  --tempColor: #9ee4e6;
+  --statsColor: #e0e5ef;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap");
@@ -39,14 +57,18 @@ body {
 .container {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(45deg, #efefef 0%, #e0dddd 50%);
+  background-image: linear-gradient(
+    45deg,
+    var(--bgColor1) 0%,
+    var(--bgColor2) 50%
+  );
 }
 .blur {
   position: absolute;
   width: 22rem;
   height: 14rem;
   border-radius: 50%;
-  background: #a6ddf0;
+  background: var(--blurBg);
   filter: blur(72px);
 }
 .content {
@@ -71,6 +93,7 @@ body {
 
 .info-container {
   background: var(--cardColor);
+  color: var(--textColor);
   box-shadow: var(--profileShadow);
   z-index: 100;
   border-radius: 1rem;
@@ -88,15 +111,17 @@ body {
 .logo {
   font-weight: bold;
   font-size: 1.25rem;
-  background: -webkit-linear-gradient(#a4b7b1, #095f62);
+  background: -webkit-linear-gradient(#b7a8a4, #095f62);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .city {
   display: inline-flex;
+  color: var(--textColor);
 }
 .city > svg {
+  color: var(--textColor);
   margin-right: 10px;
   height: 20px;
 }
@@ -126,7 +151,7 @@ body {
 .search h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+  color: var(--textColor);
 }
 .search hr {
   border-bottom: 3px solid #ffff;
@@ -144,7 +169,7 @@ body {
   padding-left: 10px;
   border: none;
   outline: none;
-  color: black;
+  color: var(--textColor);
   font-size: 1rem;
   border-radius: 5px;
   border-top-right-radius: 0px;
@@ -160,7 +185,7 @@ body {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   padding: 8px;
-  color: white;
+  color: var(--textColor);
   transition: all 0.5s ease;
 }
 .s-icon:hover {
@@ -197,6 +222,12 @@ body {
   box-shadow: var(--profileShadow);
   border-radius: 1rem;
   margin: 1rem;
+}
+.summary:hover {
+  transition: all 0.2s ease-out;
+  box-shadow: 0px 10px 17px 2px rgba(74, 68, 68, 0.25);
+  top: -4px;
+  border: 1px solid #cccccc;
 }
 .title {
   margin-top: 3rem;
@@ -372,4 +403,41 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* dark and light mode toggle */
+.toggle-container {
+  padding: 0.5rem;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color: rgba(46, 49, 56, 0.51);
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
 }
