@@ -1,7 +1,7 @@
 import moment from 'moment'
 import '../css/SummaryCard.css'
 import React, { useMemo } from 'react'
-import convertToFahrenheit from '../../helpers/convertToFahrenheit'
+import convertToFahrenheit from '../helpers/convertToFahrenheit'
 
 
 function SummaryCard({ day, isFahrenheitMode, degreeSymbol }) {

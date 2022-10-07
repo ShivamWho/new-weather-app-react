@@ -3,7 +3,7 @@ import moment from 'moment';
 import '../css/DetailsCard.css';
 import BackgroundSound from './BackgroundSound';
 import { useTranslation } from 'react-i18next';
-import convertToFahrenheit from '../../helpers/convertToFahrenheit'
+import convertToFahrenheit from '../helpers/convertToFahrenheit'
 
 function DetailsCard({ weather_icon, data, soundEnabled, isFahrenheitMode, degreeSymbol}) {
 	const { clouds, main, weather } = data.list[0];
