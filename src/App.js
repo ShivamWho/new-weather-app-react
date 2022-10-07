@@ -1,10 +1,6 @@
-import { TbMapSearch } from "react-icons/tb";
-import { TbSearch } from "react-icons/tb";
-import { useState } from "react";
-import { TbVolume } from "react-icons/tb";
-import { TbMoon } from "react-icons/tb";
-import { TbSun } from "react-icons/tb";
-import { TbVolumeOff } from "react-icons/tb";
+import { TbMapSearch, TbSearch, TbVolume, TbMoon, TbSun, TbVolumeOff } from "react-icons/tb";
+import { RiCelsiusFill, RiFahrenheitFill} from "react-icons/ri"
+import { useState, useMemo } from "react";
 import DetailsCard from "./components/DetailsCard";
 import SummaryCard from "./components/SummaryCard";
 import { useTranslation } from "react-i18next";
@@ -18,7 +14,6 @@ import BackgroundColor from "./components/BackgroundColor";
 
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(API_KEY);
   const { t, i18n } = useTranslation();
 
   const [noData, setNoData] = useState(t("no-data"));
@@ -31,10 +26,18 @@ function App() {
   const [currentLanguage, setLanguage] = useState("en");
   const [loading, setLoading] = useState(false);
   const [backgroundSoundEnabled, setBackgroundSoundEnabled] = useState(true);
+  const [isFahrenheitMode, setIsFahrenheitMode] = useState(false);
+
+  const degreeSymbol = useMemo(() => isFahrenheitMode ? '\u00b0F' : '\u00b0C', [isFahrenheitMode])
 
   const toggleDark = () => {
     document.body.classList.toggle("dark");
   };
+
+  const toggleFahrenheit = () => {
+    setIsFahrenheitMode(!isFahrenheitMode)
+  };
+
   const handleChange = (input) => {
     const { value } = input.target;
     setSearchTerm(value);
@@ -133,14 +136,14 @@ function App() {
             <div className="logo">
               Weather App<hr></hr>
             </div>
-            <div class="toggle-container">
+            <div className="toggle-container">
               <input
                 type="checkbox"
-                class="checkbox"
+                className="checkbox"
                 id="checkbox"
                 onChange={toggleDark}
               />
-              <label for="checkbox" class="label">
+              <label htmlFor="checkbox" className="label">
                 <TbMoon
                   style={{
                     color: "#a6ddf0",
@@ -151,7 +154,7 @@ function App() {
                     color: "#f5c32c",
                   }}
                 />
-                <div class="ball" />
+                <div className="ball" />
               </label>
             </div>
             <div className="city">
@@ -188,6 +191,7 @@ function App() {
           </div>
         </div>
         <div className="info-container">
+          <div className="info-inner-container">
           <select
             className="selected-languange"
             value={currentLanguage}
@@ -200,7 +204,20 @@ function App() {
             <option value="fr">{t("languages.fr")}</option>
             <option value="id">{t("languages.id")}</option>
           </select>
-
+          <div className="toggle-container">
+              <input
+                type="checkbox"
+                className="checkbox"
+                id="fahrenheit-checkbox"
+                onChange={toggleFahrenheit}
+              />
+              <label htmlFor="fahrenheit-checkbox" className="label">
+                <RiFahrenheitFill/>
+                <RiCelsiusFill />
+                <div className="ball" />
+              </label>
+            </div>
+          </div>
           {loading ? (
             <div className="loader"></div>
           ) : (
@@ -236,13 +253,15 @@ function App() {
                     weather_icon={weatherIcon}
                     data={weatherData}
                     soundEnabled={backgroundSoundEnabled}
+                    isFahrenheitMode={isFahrenheitMode}
+                    degreeSymbol={degreeSymbol}
                   />
                   <h1 className="title centerTextOnMobile">
                     {t("more-on")} {city}
                   </h1>
                   <ul className="summary">
                     {weatherData.list.map((days, index) => (
-                      <SummaryCard key={index} day={days} />
+                      <SummaryCard key={index} day={days} isFahrenheitMode={isFahrenheitMode} degreeSymbol={degreeSymbol}/>
                     ))}
                   </ul>
                 </>
