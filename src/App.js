@@ -1,6 +1,6 @@
 import { TbMapSearch, TbSearch, TbVolume, TbMoon, TbSun, TbVolumeOff } from "react-icons/tb";
 import { RiCelsiusFill, RiFahrenheitFill} from "react-icons/ri"
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import DetailsCard from "./components/DetailsCard";
 import SummaryCard from "./components/SummaryCard";
 import { useTranslation } from "react-i18next";
@@ -28,6 +28,7 @@ function App() {
   const [backgroundSoundEnabled, setBackgroundSoundEnabled] = useState(true);
   const [isFahrenheitMode, setIsFahrenheitMode] = useState(false);
 
+  const degreeSymbol = useMemo(() => isFahrenheitMode ? '\u00b0F' : '\u00b0C', [isFahrenheitMode])
 
   const toggleDark = () => {
     document.body.classList.toggle("dark");
@@ -253,13 +254,14 @@ function App() {
                     data={weatherData}
                     soundEnabled={backgroundSoundEnabled}
                     isFahrenheitMode={isFahrenheitMode}
+                    degreeSymbol={degreeSymbol}
                   />
                   <h1 className="title centerTextOnMobile">
                     {t("more-on")} {city}
                   </h1>
                   <ul className="summary">
                     {weatherData.list.map((days, index) => (
-                      <SummaryCard key={index} day={days} />
+                      <SummaryCard key={index} day={days} isFahrenheitMode={isFahrenheitMode} degreeSymbol={degreeSymbol}/>
                     ))}
                   </ul>
                 </>
