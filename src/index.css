@@ -221,7 +221,7 @@ body {
   /* grid-template-columns: repeat(2, 40%); */
   justify-content: space-around;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   background-color: var(--cardColor);
   box-shadow: var(--profileShadow);
   border-radius: 1rem;
