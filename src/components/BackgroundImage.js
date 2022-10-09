@@ -1,4 +1,3 @@
-import LakeBackground from "../asset/lake-background.jpg";
 function BackgroundImage(data) {
   let id = 0;
   if (!Array.isArray(data) && data.list[0].weather[0].id) {
