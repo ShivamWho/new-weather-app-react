@@ -19,7 +19,7 @@ function BackgroundImage(data) {
     } else if (weatherId === 800) {
       return "https://i.gifer.com/Lx0q.gif"; // clear day Image
     } else {
-      return LakeBackground; // cloudy day
+      return "https://i.gifer.com/6HU.gif"; // cloudy day
     }
   }
 
