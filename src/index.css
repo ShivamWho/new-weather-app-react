@@ -16,9 +16,11 @@
   --bgColor2: #e0dddd;
   --blurBg: #a6ddf0;
   --textColor: #000;
+  --leftHeading: #000;
   --subHeadingColor: darkgray;
   --tempColor: #095f62;
   --statsColor: #7c7979;
+  --logoColor: transparent;
 }
 
 .dark {
@@ -30,6 +32,117 @@
   --subHeadingColor: rgb(17, 17, 17);
   --tempColor: #9ee4e6;
   --statsColor: #e0e5ef;
+}
+
+/* * change text color according to weather */
+
+.rain {
+  --textColor: #6d6d6d;
+  --subHeadingColor: #6d6d6d;
+  --tempColor: #6d6d6d;
+  --statsColor: #6d6d6d;
+  --leftHeading: #cbcbcb;
+  --logoColor: #cbcbcb;
+}
+.dark.rain {
+  --textColor: #2e2e2e;
+  --subHeadingColor: #2e2e2e;
+  --tempColor: #2e2e2e;
+  --statsColor: #2e2e2e;
+  --leftHeading: #cbcbcb;
+  --logoColor: #cbcbcb;
+}
+
+.snow {
+  --textColor: #4d4757;
+  --subHeadingColor: #4d4757;
+  --tempColor: #4d4757;
+  --statsColor: #4d4757;
+  --leftHeading: #fff;
+  --logoColor: #fff;
+}
+.dark.snow {
+  --textColor: #fff;
+  --subHeadingColor: #fff;
+  --tempColor: #fff;
+  --statsColor: #fff;
+}
+
+.cloudy {
+  --textColor: #4d4757;
+  --subHeadingColor: #4d4757;
+  --tempColor: #4d4757;
+  --statsColor: #4d4757;
+  --leftHeading: #000;
+  --logoColor: #000;
+}
+.dark.cloudy {
+  --textColor: #fbb153;
+  --subHeadingColor: #fbb153;
+  --tempColor: #fbb153;
+  --statsColor: #fbb153;
+  --leftHeading: #fbb153;
+  --logoColor: #fbb153;
+}
+
+.drizzle {
+  --textColor: #4d4757;
+  --subHeadingColor: #4d4757;
+  --tempColor: #4d4757;
+  --statsColor: #4d4757;
+  --leftHeading: #fff;
+  --logoColor: #fff;
+}
+.dark.drizzle {
+  --textColor: #d9cdba;
+  --subHeadingColor: #d9cdba;
+  --tempColor: #d9cdba;
+  --statsColor: #d9cdba;
+}
+
+.clear-day {
+  --textColor: #191970aa;
+  --subHeadingColor: #191970aa;
+  --tempColor: #191970aa;
+  --statsColor: #191970aa;
+  --leftHeading: #191970c0;
+  --logoColor: #191970c0;
+}
+.dark.clear-day {
+  --textColor: #9fcdffd0;
+  --subHeadingColor: #9fcdffd0;
+  --tempColor: #9fcdffd0;
+  --statsColor: #9fcdffd0;
+}
+
+.strong-wind {
+  --textColor: #3779d1;
+  --subHeadingColor: #3779d1;
+  --tempColor: #3779d1;
+  --statsColor: #3779d1;
+  --leftHeading: #000;
+  --logoColor: #000;
+}
+.dark.strong-wind {
+  --textColor: #cee2ff;
+  --subHeadingColor: #cee2ff;
+  --tempColor: #cee2ff;
+  --statsColor: #cee2ff;
+}
+
+.thunderstorm {
+  --textColor: #4d4757;
+  --leftHeading: #fff;
+  --subHeadingColor: #4d4757;
+  --tempColor: #4d4757;
+  --statsColor: #4d4757;
+  --logoColor: #fff;
+}
+.dark.thunderstorm {
+  --textColor: #e8fcf6;
+  --subHeadingColor: #e8fcf6;
+  --tempColor: #e8fcf6;
+  --statsColor: #e8fcf6;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap');
@@ -118,7 +231,7 @@ body {
   background: -webkit-linear-gradient(#b7a8a4, #095f62);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--logoColor);
 }
 
 .city {
@@ -156,7 +269,7 @@ body {
 .search h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: var(--textColor);
+  color: var(--leftHeading);
 }
 .search hr {
   border-bottom: 3px solid #ffff;
@@ -194,7 +307,7 @@ body {
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   padding: 8px;
-  color: var(--textColor);
+  color: var(--logoColor);
   transition: all 0.5s ease;
 }
 .s-icon:hover {

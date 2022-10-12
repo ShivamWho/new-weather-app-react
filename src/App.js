@@ -147,9 +147,7 @@ function App() {
           }}
         >
           <div className='name'>
-            <div className='logo'>
-              Weather App<hr></hr>
-            </div>
+            <div className='logo'>Weather App</div>
             <div className='toggle-container'>
               <input
                 type='checkbox'
@@ -211,9 +209,7 @@ function App() {
               value={currentLanguage}
               onChange={(e) => handleLanguage(e)}
             >
-              <option selected value='en'>
-                {t('languages.en')}
-              </option>
+              <option value='en'>{t('languages.en')}</option>
               <option value='es'>{t('languages.es')}</option>
               <option value='fr'>{t('languages.fr')}</option>
               <option value='id'>{t('languages.id')}</option>
