@@ -166,6 +166,10 @@ body {
   width: 100%;
   padding: 0% 28%;
 }
+::placeholder {
+  color: var(--textColor);
+  opacity: 0.9; 
+}
 .search-bar > input {
   background-color: var(--cardColor);
   width: 100%;
