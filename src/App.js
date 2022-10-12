@@ -214,6 +214,7 @@ function App() {
               <option value='fr'>{t('languages.fr')}</option>
               <option value='id'>{t('languages.id')}</option>
               <option value='tam'>{t('languages.tam')}</option>
+              <option value='hin'>{t('languages.hin')}</option>
             </select>
             <div className='toggle-container'>
               <input
