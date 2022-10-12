@@ -5,6 +5,7 @@ import es from './es.json';
 import fr from './fr.json';
 import id from './id.json';
 import tam from './tam.json';
+import hin from './hin.json';
 
 i18n.use(initReactI18next).init({
   compatibilityJSON: 'v3',
@@ -16,6 +17,7 @@ i18n.use(initReactI18next).init({
     fr: fr,
     id: id,
     tam: tam,
+    hin: hin,
   },
   interpolation: {
     escapeValue: false, // react already safes from xss
