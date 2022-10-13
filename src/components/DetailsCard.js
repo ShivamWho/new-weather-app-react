@@ -17,13 +17,13 @@ function DetailsCard({ weather_icon, data, soundEnabled, isFahrenheitMode, degre
 			temp_max: Math.round(isFahrenheitMode ? convertToFahrenheit(main.temp_max) : main.temp_max),
 		};
 	}, [isFahrenheitMode, main.feels_like, main.temp, main.temp_max, main.temp_min])
-	
+
 	return (
 		<div className='details'>
 			<div className='clouds'>
 				<p className='celsius'>{formattedData.temp}{degreeSymbol}</p>
 				<div className='cloud-icon'>
-					{weather[0].main}
+					{weather[0].main?weather[0].main:null}
 					<img src={weather_icon} className='' alt='' />
 				</div>
 				<p className='des'>
