@@ -12,6 +12,8 @@ import LakeBackground from "./asset/lake-background.jpg";
 import BackgroundImage from "./components/BackgroundImage";
 import BackgroundColor from "./components/BackgroundColor";
 
+import axios from "axios";
+
 function App() {
   const API_KEY = process.env.REACT_APP_API_KEY;
   const { t, i18n } = useTranslation();
@@ -68,32 +70,20 @@ function App() {
         : `lat=${location[0]}&lon=${location[1]}`;
 
     const url = "https://api.openweathermap.org/data/2.5/forecast?";
-    try {
-      let res = await fetch(
-        `${url}${how_to_search}&appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`
-      );
-      let data = await res.json();
-      if (data.cod !== "200") {
-        setNoData("Location Not Found");
-        setTimeout(() => {
-          setLoading(false);
-        }, 500);
-        return;
-      }
-      setWeatherData(data);
-      setTimeout(() => {
-        setLoading(false);
-      }, 500);
-      setCity(`${data.city.name}, ${data.city.country}`);
+    axios.post(`${url}${how_to_search}&appid=${API_KEY}&units=metric&cnt=5&exclude=hourly,minutely`)
+    .then((response)=>{
+      setWeatherData(response.data);
+      setLoading(false);
+      setCity(`${response.data.city.name}, ${response.data.city.country}`);
       setWeatherIcon(
         `${
-          "https://openweathermap.org/img/wn/" + data.list[0].weather[0]["icon"]
+          "https://openweathermap.org/img/wn/" + response.list[0].weather[0]["icon"]
         }@4x.png`
       );
-    } catch (error) {
-      setLoading(true);
-      console.log(error);
-    }
+    }).catch((error)=>{
+      setNoData("Location Not Found");
+      setLoading(false);
+    })
   };
 
   const myIP = (location) => {
@@ -254,18 +244,18 @@ function App() {
                 <>
                   <h1 className="centerTextOnMobile">{t("today")}</h1>
                   <DetailsCard
-                    weather_icon={weatherIcon}
-                    data={weatherData}
-                    soundEnabled={backgroundSoundEnabled}
-                    isFahrenheitMode={isFahrenheitMode}
-                    degreeSymbol={degreeSymbol}
+                    weather_icon={weatherIcon?weatherIcon:null}
+                    data={weatherData?weatherData:null}
+                    soundEnabled={backgroundSoundEnabled?backgroundSoundEnabled:null}
+                    isFahrenheitMode={isFahrenheitMode?isFahrenheitMode:null}
+                    degreeSymbol={degreeSymbol?degreeSymbol:null}
                   />
                   <h1 className="title centerTextOnMobile">
                     {t("more-on")} {city}
                   </h1>
                   <ul className="summary">
                     {weatherData.list.map((days, index) => (
-                      <SummaryCard key={index} day={days} isFahrenheitMode={isFahrenheitMode} degreeSymbol={degreeSymbol}/>
+                      <SummaryCard key={index} day={days?days:null} isFahrenheitMode={isFahrenheitMode?isFahrenheitMode:null} degreeSymbol={degreeSymbol?degreeSymbol:null}/>
                     ))}
                   </ul>
                 </>
