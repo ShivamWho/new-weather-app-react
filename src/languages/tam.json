@@ -1,0 +1,23 @@
+{
+  "translation": {
+    "title": "உங்களுக்கு தேவையான ஒரே வானிலை பயன்பாடு !",
+    "today": "இன்று",
+    "explore": "#ஆராயுங்கள் ?",
+    "more-on": "மேலும்",
+    "no-data": "இன்னும் தரவு இல்லை",
+    "unknown-location": "தெரியாத இடம்",
+    "realFell": "ரியல்ஃபெல்",
+    "cover": "கிளவுட் கவர்",
+    "humidity": "ஈரப்பதம்",
+    "min-temp": "குறைந்தபட்ச வெப்பநிலை",
+    "max-temp": "அதிகபட்ச வெப்பநிலை",
+    "languages": {
+      "en": "English",
+      "es": "Spanish",
+      "fr": "French",
+      "id": "Indonesia",
+      "tam": "Tamil",
+      "hin": "Hindi"
+    }
+  }
+}
