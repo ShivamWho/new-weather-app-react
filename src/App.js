@@ -97,6 +97,12 @@ function App() {
   })
   return (
     <div className="container">
+       <button
+              className="s-icon sound-toggler"
+              onClick={() => setBackgroundSoundEnabled((prev) => !prev)}
+            >
+              {backgroundSoundEnabled ? <TbVolume /> : <TbVolumeOff />}
+            </button>
       <div
         className="blur"
         style={{
@@ -176,12 +182,6 @@ function App() {
                 />
               </button>
             </form>
-            <button
-              className="s-icon sound-toggler"
-              onClick={() => setBackgroundSoundEnabled((prev) => !prev)}
-            >
-              {backgroundSoundEnabled ? <TbVolume /> : <TbVolumeOff />}
-            </button>
           </div>
         </div>
         <div className="info-container">
