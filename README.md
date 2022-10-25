@@ -24,7 +24,7 @@ Weather Application created using ReactJS and APIs provided by OpenAPI.org.
 ![GitHub language count](https://img.shields.io/github/languages/count/ShivamWho/new-weather-app-react?style=for-the-badge&color=brightgreen)
 <br><br>
 
-## Our Contributors
+## Our Contributors.
 
 <a href="https://github.com/ShivamWho/new-weather-app-react/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=ShivamWho/new-weather-app-react" />
