@@ -1,6 +1,6 @@
 import { TbMapSearch, TbSearch, TbVolume, TbMoon, TbSun, TbVolumeOff } from "react-icons/tb";
 import { RiCelsiusFill, RiFahrenheitFill} from "react-icons/ri"
-import { useState, useMemo } from "react";
+import { useState, useMemo} from "react";
 import DetailsCard from "./components/DetailsCard";
 import SummaryCard from "./components/SummaryCard";
 import { useTranslation } from "react-i18next";
@@ -33,7 +33,14 @@ function App() {
   const degreeSymbol = useMemo(() => isFahrenheitMode ? '\u00b0F' : '\u00b0C', [isFahrenheitMode])
 
   const toggleDark = () => {
+    let mode = localStorage.getItem('mode');
+    if(mode === null)
+      mode = 'light';
     document.body.classList.toggle("dark");
+  
+    (mode === 'light') ? (mode='dark') : (mode = 'light');
+
+    localStorage.setItem('mode', mode);
   };
 
   const toggleFahrenheit = () => {
@@ -80,6 +87,9 @@ function App() {
           "https://openweathermap.org/img/wn/" + response.list[0].weather[0]["icon"]
         }@4x.png`
       );
+      setTimeout(() => {
+        checkMode();
+      }, 2000);
     }).catch((error)=>{
       setNoData("Location Not Found");
       setLoading(false);
@@ -95,8 +105,17 @@ function App() {
   window.addEventListener("load", function() {
     navigator.geolocation.getCurrentPosition(myIP)
   })
+
+  const checkMode = () => {
+    const mode = localStorage.getItem('mode');
+    if(mode !== null && mode === 'dark'){
+      document.getElementById('checkbox').checked = true;
+      document.body.classList.toggle("dark");
+    }
+  }
+
   return (
-    <div className="container">
+    <div className="container" onLoad={checkMode}>
       <div
         className="blur"
         style={{
